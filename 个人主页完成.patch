@@ -1,0 +1,16 @@
+Index: app/src/main/java/com/example/notebook/Pager/ProfileFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/notebook/Pager/ProfileFragment.java b/app/src/main/java/com/example/notebook/Pager/ProfileFragment.java
+--- a/app/src/main/java/com/example/notebook/Pager/ProfileFragment.java	
++++ b/app/src/main/java/com/example/notebook/Pager/ProfileFragment.java	(date 1733970826838)
+@@ -76,7 +76,6 @@
+                 updated = true;
+             }
+ 
+-            // 如果有更新，执行更新操作
+             if (updated) {
+                 userDao.updataUser(user);
+                 UtilMethod.ShowToast(getContext(), "更新成功");

@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">NoteBook</string>
+    <string name="username_input_text">用户名</string>
+    <string name="login_button">登录</string>
+    <string name="password_input_text">密码</string>
+    <string name="forget_password_button">忘了密码？</string>
+    <string name="register_button">还没有账号？点击注册</string>
+    <string name="login_title">登 录</string>
+    <string name="bottom_navigation_image">Image</string>
+    <string name="bottom_navigation_note">笔记</string>
+    <string name="bottom_navigation_profile">个人</string>
+    <string name="bottom_navigation_video">视频</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="note_fragment_titile">Note</string>
+    <string name="note_fragment_titile2">当前有x篇笔记</string>
+    <string name="username">Username</string>
+    <string name="my_slogan">My slogan</string>
+    <string name="create_time">Create Time</string>
+    <string name="item_note_content">ContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContentContent</string>
+    <string name="item_note_title">Title</string>
+    <string name="delete">Delete</string>
+    <string name="tess_content">豫章故郡，洪都新府2。星分翼轸，地接衡庐3。襟三江而带五湖4，控蛮荆而引瓯越5。物华天宝，龙光射牛斗之墟6；人杰地灵，徐孺下陈蕃之榻7。雄州雾列8，俊采星驰9。台隍枕夷夏之交10，宾主尽东南之美11。都督阎公之雅望，棨戟遥临；宇文新州之懿范，襜帷暂驻12。十旬休假13，胜友如云；千里逢迎14，高朋满座。腾蛟起凤，孟学士之词宗15；紫电青霜，王将军之武库16。家君作宰，路出名区；童子何知，躬逢胜饯17。</string>
+    <string name="todo">TODO</string>
+    <string name="note_title">Title</string>
+    <string name="Content">Content</string>
+    <string name="noteLength">%d words</string>
+    <string name="Description" />
+    <string name="no_note">没有笔记!</string>
+    <string name="note_alter">当前有 %d 笔记</string>
+    <string name="confirm_button">确定</string>
+    <string name="alert_revise">修改密码</string>
+    <string name="Create_account">创建账号</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="创建账号">创建账号</string>
+    <string name="item_time">2024-12-12</string>
+    <string name="item_username">username</string>
+    <string name="new_slogan">new slogan</string>
+    <string name="password">旧密码</string>
+    <string name="new_password">新密码</string>
+</resources>
