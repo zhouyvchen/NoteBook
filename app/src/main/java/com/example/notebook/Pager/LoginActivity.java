@@ -8,7 +8,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.notebook.CreateAccountActivity;
 import com.example.notebook.Dao.UserDao;
 import com.example.notebook.Entity.EntityUser;
 import com.example.notebook.InitDataBase.InitDataBase;

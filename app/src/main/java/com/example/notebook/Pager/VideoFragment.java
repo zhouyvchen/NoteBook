@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +31,7 @@ public class VideoFragment extends Fragment {
     private RecyclerView videoRecyclerView;
     private VideoAdapter videoAdapter;
     private List<Video> videoList;
+    private TextView noVideosTextView;
 
     @Nullable
     @Override
@@ -40,7 +42,7 @@ public class VideoFragment extends Fragment {
         videoList = new ArrayList<>();
         videoAdapter = new VideoAdapter(videoList, getContext());
         videoRecyclerView.setAdapter(videoAdapter);
-
+        noVideosTextView = view.findViewById(R.id.no_videos_text_view);
         checkPermissionAndLoadVideos();
         return view;
     }
@@ -89,6 +91,12 @@ public class VideoFragment extends Fragment {
             }
             cursor.close();
             videoAdapter.notifyDataSetChanged();
+// 没有找到视频提示
+            if (videoList.isEmpty()) {
+                noVideosTextView.setVisibility(View.VISIBLE);
+            } else {
+                noVideosTextView.setVisibility(View.GONE);
+            }
         }
     }
 

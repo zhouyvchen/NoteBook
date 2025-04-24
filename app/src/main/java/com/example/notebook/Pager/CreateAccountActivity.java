@@ -1,7 +1,6 @@
-package com.example.notebook;
+package com.example.notebook.Pager;
 
 import android.os.Bundle;
-import android.telephony.SmsManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 

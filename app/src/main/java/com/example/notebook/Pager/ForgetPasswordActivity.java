@@ -49,14 +49,13 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                 return;
             }
 
-            // 更新密码
-            user.setPassword(newPassword);
+            // 更新密码（使用setPlainPassword进行加密）
+            user.setPlainPassword(newPassword);
             userDao.updataUser(user);
 
             // 提供反馈
-            UtilMethod.ShowToast(getApplicationContext(), "更新成功");
+            UtilMethod.ShowToast(getApplicationContext(), "密码更新成功");
             finish();
-
         });
     }
 }
