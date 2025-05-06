@@ -44,7 +44,7 @@ public class NoteFragment extends Fragment {
 
         initMethod();
         initList();
-
+//创建新笔记
         binding.floatingActionButton.setOnClickListener(view -> {
             startActivity(new Intent(getActivity(),
                     AddOrEditeNoteActivity.class));
