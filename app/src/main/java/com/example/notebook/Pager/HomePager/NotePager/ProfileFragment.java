@@ -1,6 +1,7 @@
 package com.example.notebook.Pager.HomePager.NotePager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -20,7 +21,9 @@ import com.bumptech.glide.Glide;
 import com.example.notebook.Dao.UserDao;
 import com.example.notebook.Entity.EntityUser;
 import com.example.notebook.InitDataBase.InitDataBase;
+import com.example.notebook.Pager.SettingActivity;
 import com.example.notebook.Util.UtilMethod;
+import com.example.notebook.Util.SecurityUtil;
 import com.example.notebook.databinding.FragmentProfielBinding;
 
 import java.util.Objects;
@@ -92,9 +95,9 @@ public class ProfileFragment extends Fragment {
             boolean updated = false; // 用于跟踪是否有更新
 
             if (!password.isEmpty()) {
-                if (password.equals(user.getPassword())) {
+                if (SecurityUtil.verifyPassword(password, user.getPassword())) {
                     if (!newPassword.isEmpty()) {
-                        user.setPassword(newPassword);
+                        user.setPassword(SecurityUtil.hashPassword(newPassword));
                         updated = true;
                     } else {
                         binding.inputLayoutPassword.setError("新密码不能为空!");
@@ -119,6 +122,10 @@ public class ProfileFragment extends Fragment {
                     .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
                     .build();
             pickMedia.launch(request);
+        });
+
+        binding.settingsButton.setOnClickListener(view -> {
+            startActivity(new Intent(getActivity(), SettingActivity.class));
         });
     }
 }

@@ -20,6 +20,7 @@ import com.example.notebook.Entity.EntityNote;
 import com.example.notebook.Entity.EntityNoteCard;
 import com.example.notebook.Entity.EntityUser;
 import com.example.notebook.InitDataBase.InitDataBase;
+import com.example.notebook.Pager.ShakeDetector;
 import com.example.notebook.R;
 import com.example.notebook.Util.UtilMethod;
 import com.example.notebook.databinding.FragmentNoteBinding;
@@ -36,6 +37,7 @@ public class NoteFragment extends Fragment {
     String currentUsername; // 保存当前登录的用户名
     String currentSlogan;
     String currentAvatarUri;
+    ShakeDetector shakeDetector;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +46,7 @@ public class NoteFragment extends Fragment {
 
         initMethod();
         initList();
+        initShakeDetector();
 //创建新笔记
         binding.floatingActionButton.setOnClickListener(view -> {
             startActivity(new Intent(getActivity(),
@@ -117,7 +120,50 @@ public class NoteFragment extends Fragment {
     @Override
     public void onResume() {
         initList();
+        if (shakeDetector != null) {
+            // 从SharedPreferences读取设置
+            SharedPreferences sharedPreferences = requireContext().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+            boolean isShakeEnabled = sharedPreferences.getBoolean("shake_enabled", true);
+
+            if (isShakeEnabled) {
+                shakeDetector.start();
+            } else {
+                shakeDetector.stop();
+            }
+        }
         super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        // 停止摇一摇检测
+        if (shakeDetector != null) {
+            shakeDetector.stop();
+        }
+        super.onPause();
+    }
+
+    private void initShakeDetector(){
+        shakeDetector = new ShakeDetector(requireContext());
+        shakeDetector.setShakeListener(new ShakeDetector.ShakeListener() {
+            @Override
+            public void onShake() {
+                // 再次检查摇一摇功能是否启用（以防设置在运行时更改）
+                SharedPreferences sharedPreferences = requireContext().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+                boolean isShakeEnabled = sharedPreferences.getBoolean("shake_enabled", true);
+                
+                if (isShakeEnabled) {
+                    createNote();
+                }
+            }
+        });
+        
+        // 初始化时检查是否应该启动摇一摇检测
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+        boolean isShakeEnabled = sharedPreferences.getBoolean("shake_enabled", true);
+        if (isShakeEnabled) {
+            shakeDetector.start();
+        }
     }
 
     private String getCurrentUsername() {
@@ -137,5 +183,10 @@ public class NoteFragment extends Fragment {
         EntityUser user = userDao.getUserByUsername(currentUsername);
         currentAvatarUri = user.getUserAvatar();
         return currentAvatarUri;
+    }
+
+
+    private void createNote() {
+        startActivity(new Intent(getActivity(), AddOrEditeNoteActivity.class));
     }
 }

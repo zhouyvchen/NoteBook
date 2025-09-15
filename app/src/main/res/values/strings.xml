@@ -28,7 +28,7 @@
     <string name="Description" />
     <string name="no_note">没有笔记!</string>
     <string name="note_alter">当前有 %d 笔记</string>
-    <string name="confirm_button">确定</string>
+    <string name="confirm_button">更新密码</string>
     <string name="alert_revise">修改密码</string>
     <string name="Create_account">创建账号</string>
     <string name="confirm_password">确认密码</string>

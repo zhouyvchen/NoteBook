@@ -12,7 +12,6 @@ import com.example.notebook.Entity.EntityUser;
         exportSchema = false)
 public abstract class InitDataBase extends RoomDatabase {
     public abstract NoteDao noteDao();
-
     public abstract UserDao userDao();
 
 }
